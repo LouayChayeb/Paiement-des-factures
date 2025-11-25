@@ -11,7 +11,7 @@ public interface AccountService {
     Account createAccount(Account account);
     void updateAccount(Account account);
     void deleteAccount(Long accountId);
-    Account login(String username, String password);
+    Account login(String phone, String password);
 
 
 

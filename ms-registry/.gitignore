@@ -4,11 +4,6 @@ target/
 !**/src/main/**/target/
 !**/src/test/**/target/
 
-# Application properties
-src/main/resources/application.properties
-# If using YAML
-src/main/resources/application.yml
-
 ### STS ###
 .apt_generated
 .classpath

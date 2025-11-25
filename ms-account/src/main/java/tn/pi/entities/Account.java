@@ -25,6 +25,16 @@ public class Account {
     private String email;
     private String phone;
     private String address;
+    private Double balance;
+
+    public Double getBalance() {
+        return balance;
+    }
+
+    public void setBalance(Double balance) {
+        this.balance = balance;
+    }
+
 
 
     public Long getAccount_id() {

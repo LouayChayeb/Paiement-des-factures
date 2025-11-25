@@ -7,6 +7,6 @@ import java.util.Optional;
 
 public interface AccountRepo extends JpaRepository<Account, Long> {
 
-    Optional<Object> findByPhone(String phone);
+    Optional<Account> findByPhone(String phone);
     Optional<Account> findByName(String name);
 }

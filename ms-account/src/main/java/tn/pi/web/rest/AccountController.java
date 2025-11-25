@@ -1,11 +1,16 @@
 package tn.pi.web.rest;
 
 
+import jakarta.servlet.http.HttpSession;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import tn.pi.dtos.LoginRequest;
 import tn.pi.entities.Account;
 import tn.pi.service.AccountService;
 
 import java.util.List;
+import java.util.Map;
+
 
 @RestController("/account")
 public class AccountController {
@@ -22,13 +27,37 @@ public class AccountController {
     public Account getOneAccount(@PathVariable long id){
         return accountService.getAccountById(id);
     }
-    @PostMapping("AccountList/signup")
+    @PostMapping("accountList/signup")
     public Account createAccount(@RequestBody Account account){
         return accountService.createAccount(account);
     }
-    @GetMapping("accountList/login")
-    public Account login(@RequestParam String username, @RequestParam String password){
-        return accountService.login(username, password);
+    @PostMapping("/accountList/login")
+    public ResponseEntity<?> login(@RequestBody LoginRequest request , HttpSession session) {
 
+        Account account = accountService.login(request.getPhone(), request.getPassword());
+
+        session.setAttribute("user", account);
+
+        return ResponseEntity.ok(
+                Map.of(
+                        "message", "Login successful",
+                        "account", account
+                )
+        );
     }
+    @GetMapping("/accountList/me")
+    public ResponseEntity<?> me(HttpSession session) {
+
+        Account loggedUser = (Account) session.getAttribute("user");
+
+        if (loggedUser == null) {
+            return ResponseEntity.status(401).body(Map.of("message", "Not logged in"));
+        }
+
+        return ResponseEntity.ok(loggedUser);
+    }
+
+
+
+
 }

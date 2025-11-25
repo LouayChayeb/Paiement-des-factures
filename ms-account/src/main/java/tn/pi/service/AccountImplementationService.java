@@ -60,12 +60,12 @@ public class AccountImplementationService implements AccountService {
 
     }
     @Override
-    public Account login(String name, String password) {
+    public Account login(String phone, String password) {
 
-        Optional<Account> optionalAccount = accountRepo.findByName(name);
+        Optional<Account> optionalAccount = accountRepo.findByPhone(phone);
 
         if (optionalAccount.isEmpty()) {
-            throw new ThisAccountNotFoundException("Wrong username or password");
+            throw new ThisAccountNotFoundException("Wrong creds");
         }
 
         Account account = optionalAccount.get();
