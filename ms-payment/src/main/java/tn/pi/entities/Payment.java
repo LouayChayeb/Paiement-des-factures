@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
 import tn.pi.models.Account;
 import tn.pi.models.Bill;
 
@@ -17,6 +18,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+
 public class Payment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

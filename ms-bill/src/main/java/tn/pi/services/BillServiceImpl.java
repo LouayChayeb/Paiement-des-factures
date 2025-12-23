@@ -67,5 +67,9 @@ public class BillServiceImpl implements BillService {
         existing.setStatus(status);
         return billRepository.save(existing);
     }
+    @Override
+    public List<Bill> getBillsByCustomerId(Long customerId) {
+        return billRepository.findByCustomerId(customerId);
+    }
 
 }

@@ -1,6 +1,8 @@
 package tn.pi.controllers;
 
 import com.stripe.exception.StripeException;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import tn.pi.entities.Payment;

@@ -1,0 +1,38 @@
+spring:
+  application:
+    name: ms-gateway
+  cloud:
+    gateway:
+      server:
+        webmvc:
+          routes:
+            - id: MS-ACCOUNT
+              uri: lb://ms-account
+              predicates:
+                - Path=/api/account/**
+              filters:
+                - StripPrefix=2
+
+
+            - id: ms-bill
+              uri: lb://ms-bill
+              predicates:
+                - Path=/api/bill/**
+              filters:
+                - StripPrefix=2
+
+
+            - id: ms-payment
+              uri: lb://ms-payment
+              predicates:
+                - Path=/api/payment/**
+              filters:
+                - StripPrefix=2
+
+server:
+  port: 8083
+
+eureka:
+  client:
+    service-url:
+      defaultZone: ${EUREKA_URI:http://localhost:8761/eureka}

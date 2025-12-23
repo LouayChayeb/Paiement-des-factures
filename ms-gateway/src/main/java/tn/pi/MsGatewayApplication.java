@@ -6,10 +6,10 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 @SpringBootApplication
 @EnableDiscoveryClient
-public class MsBillApplication {
+public class MsGatewayApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(MsBillApplication.class, args);
+        SpringApplication.run(MsGatewayApplication.class, args);
     }
 
 }

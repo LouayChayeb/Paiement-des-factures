@@ -51,4 +51,9 @@ public class BillController {
         Bill updatedBill = billService.updateBillStatus(id, status);
         return ResponseEntity.ok(updatedBill);
     }
+    @GetMapping("/customer/{customerId}")
+    public List<Bill> getBillsByCustomer(@PathVariable Long customerId) {
+        return billService.getBillsByCustomerId(customerId);
+    }
+
 }

@@ -9,5 +9,6 @@ public interface BillService {
     Bill addBill(Bill bill) throws Exception;
     List<Bill> getAllBills();
     Bill getBillById(Long id);
+    List<Bill> getBillsByCustomerId(Long customerId);
     Bill updateBillStatus(Long id, BillStatus status);
 }

@@ -1,6 +1,7 @@
 package tn.pi.web.rest;
 
 
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -32,19 +33,27 @@ public class AccountController {
         return accountService.createAccount(account);
     }
     @PostMapping("/accountList/login")
-    public ResponseEntity<?> login(@RequestBody LoginRequest request , HttpSession session) {
+    public ResponseEntity<?> login(@RequestBody LoginRequest request, HttpServletRequest servletRequest) {
 
         Account account = accountService.login(request.getPhone(), request.getPassword());
 
+
+        HttpSession session = servletRequest.getSession();
         session.setAttribute("user", account);
+
+
+        String sessionId = session.getId();
+
 
         return ResponseEntity.ok(
                 Map.of(
                         "message", "Login successful",
-                        "account", account
+                        "account", account,
+                        "sessionId", sessionId
                 )
         );
     }
+
     @GetMapping("/accountList/me")
     public ResponseEntity<?> me(HttpSession session) {
 
@@ -55,6 +64,11 @@ public class AccountController {
         }
 
         return ResponseEntity.ok(loggedUser);
+    }
+    @PostMapping("/accountList/logout")
+    public ResponseEntity<?> logout(HttpSession session) {
+        session.invalidate();
+        return ResponseEntity.ok(Map.of("message", "Logged out"));
     }
 
 

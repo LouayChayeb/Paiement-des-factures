@@ -3,6 +3,12 @@
   <component name="CompilerConfiguration">
     <annotationProcessing>
       <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="ms-gateway" />
+      </profile>
       <profile name="Annotation profile for ms-account" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
@@ -10,19 +16,20 @@
         <processorPath useClasspath="false">
           <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/unknown/lombok-unknown.jar" />
         </processorPath>
+        <module name="ms-bill" />
+        <module name="ms-payment" />
         <module name="ms-account" />
+        <module name="ms-registry" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="ms-bill" target="17" />
-      <module name="ms-payment" target="17" />
-    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="ms-account" options="-parameters" />
       <module name="ms-bill" options="-parameters" />
+      <module name="ms-gateway" options="-parameters" />
       <module name="ms-payment" options="-parameters" />
+      <module name="ms-registry" options="-parameters" />
     </option>
   </component>
 </project>
