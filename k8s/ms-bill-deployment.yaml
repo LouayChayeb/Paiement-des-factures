@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ms-bill
+  labels:
+    app: ms-bill
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ms-bill
+  template:
+    metadata:
+      labels:
+        app: ms-bill
+    spec:
+      containers:
+      - name: ms-bill
+        image: keskiidou1/ms-bill:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
+        env:
+        - name: SPRING_PROFILES_ACTIVE
+          value: "kubernetes"

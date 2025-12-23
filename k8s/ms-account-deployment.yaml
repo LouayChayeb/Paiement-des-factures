@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ms-account
+  labels:
+    app: ms-account
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ms-account
+  template:
+    metadata:
+      labels:
+        app: ms-account
+    spec:
+      containers:
+      - name: ms-account
+        image: keskiidou1/ms-account:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
+        env:
+        - name: SPRING_PROFILES_ACTIVE
+          value: "kubernetes"

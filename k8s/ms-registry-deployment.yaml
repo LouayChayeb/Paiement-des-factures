@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ms-registry
+  labels:
+    app: ms-registry
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ms-registry
+  template:
+    metadata:
+      labels:
+        app: ms-registry
+    spec:
+      containers:
+      - name: ms-registry
+        image: keskiidou1/ms-registry:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
+        env:
+        - name: SPRING_PROFILES_ACTIVE
+          value: "kubernetes"
