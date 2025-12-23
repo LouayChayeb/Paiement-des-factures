@@ -9,7 +9,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="ms-gateway" />
       </profile>
-      <profile name="Annotation profile for ms-account" enabled="true">
+      <profile name="Annotation profile for ms-registry" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
@@ -18,8 +18,8 @@
         </processorPath>
         <module name="ms-bill" />
         <module name="ms-payment" />
-        <module name="ms-account" />
         <module name="ms-registry" />
+        <module name="ms-account" />
       </profile>
     </annotationProcessing>
   </component>
