@@ -1,0 +1,6 @@
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://ms-registry:8761/eureka/
+  instance:
+    preferIpAddress: true
