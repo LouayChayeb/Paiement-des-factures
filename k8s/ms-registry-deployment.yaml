@@ -19,7 +19,7 @@ spec:
         image: keskiidou1/ms-registry:latest
         imagePullPolicy: Always
         ports:
-        - containerPort: 8080
+        - containerPort: 8761
         env:
         - name: SPRING_PROFILES_ACTIVE
           value: "kubernetes"

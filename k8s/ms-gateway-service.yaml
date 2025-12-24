@@ -7,7 +7,7 @@ spec:
     app: ms-gateway
   ports:
   - name: http
-    port: 80
-    targetPort: 8080
+    port: 8083
+    targetPort: 8083
     protocol: TCP
   type: ClusterIP
