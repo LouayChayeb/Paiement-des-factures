@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  ms-bill-ocr:
+    build: .
+    container_name: ms-bill-ocr
+    ports:
+      - "5000:5000"
+    environment:
+      - SERVICE_NAME=ms-bill-ocr
+      - SERVICE_PORT=5000
+      - JAVA_API_URL=http://host.docker.internal:8083/api/bill/bill/addbill
+      - EUREKA_SERVER=http://eureka-server:8761/eureka
+      - REGISTER_WITH_EUREKA=false
+      - LOG_LEVEL=INFO
+    volumes:
+      - ./logs:/app/logs
+    restart: unless-stopped
+    networks:
+      - microservices-network
+
+networks:
+  microservices-network:
+    driver: bridge

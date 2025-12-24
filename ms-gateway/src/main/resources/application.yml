@@ -29,6 +29,13 @@ spring:
               filters:
                 - StripPrefix=2
 
+            - id: ms-ocr
+              uri: lb://MS-BILL-OCR
+              predicates:
+                - Path=/api/ocr/**
+              filters:
+                - RewritePath=/api/ocr/(?<segment>.*), /api/bill/$\{segment}
+
 server:
   port: 8083
 
